@@ -593,7 +593,7 @@
     <p class="hero-sub">Hot takes, game recaps, and fan culture for Las Vegas Athletics fans. No mercy. No filter. Just baseball.</p>
     <div class="hero-ctas">
       <a href="#blog" class="btn-primary">Read The Takes</a>
-      <a href="#signup" class="btn-secondary">Get Updates</a>
+      <a href="https://www.ticketsonsale.com/sports/athletics" target="_blank" rel="noopener" class="btn-secondary">🎟️ Get Tickets</a>
     </div>
   </section>
 
@@ -682,11 +682,31 @@
   <section class="email-section" id="signup">
     <h2>Don't Miss A <span>Single Take</span></h2>
     <p>Hot takes, roster news, stadium updates. No spam. Just A's stuff.</p>
-    <form class="email-form" onsubmit="return false;">
-      <input type="email" placeholder="your@email.com" />
-      <button type="submit">Let's Go</button>
+    <form class="email-form" id="subscribeForm">
+      <input type="email" id="emailInput" placeholder="your@email.com" required />
+      <button type="submit" id="submitBtn">Let's Go</button>
     </form>
   </section>
+
+  <script>
+    document.getElementById('subscribeForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      const btn = document.getElementById('submitBtn');
+      if (!email) return;
+      btn.textContent = '...';
+      btn.disabled = true;
+      try {
+        await fetch('https://thelvathletics.vercel.app/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'thelvas' }),
+        });
+      } catch(err) {}
+      btn.textContent = "✅ You're In!";
+      document.getElementById('emailInput').value = '';
+    });
+  </script>
 
   <!-- FOOTER -->
   <footer>
