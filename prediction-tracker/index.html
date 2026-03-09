@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate My Take: Prediction Tracker | Las Vegas Athletics Bold Predictions</title>
+  <meta name="description" content="Track every bold prediction we've ever made. See our record and tell us where we were right or wrong." />
+  <meta name="keywords" content="athletics predictions tracker, a's bold predictions, las vegas athletics stats, mlb predictions" />
+  <link rel="canonical" href="https://thelvas.com/prediction-tracker/" />
+  
+  <meta property="og:title" content="The LV A's Prediction Tracker" />
+  <meta property="og:description" content="Can you handle our heat? Track the boldest predictions in Vegas baseball." />
+  <meta property="og:url" content="https://thelvas.com/prediction-tracker/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://thelvas.com/prediction-tracker/og-predictions.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The LV A's Prediction Tracker" />
+  <meta name="twitter:description" content="Can you handle our heat? Track the boldest predictions in Vegas baseball." />
+  <meta name="twitter:image" content="https://thelvas.com/prediction-tracker/og-predictions.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --dark: #050805;
+      --green: #003831;
+      --green-bright: #005C4B;
+      --gold: #EFB21E;
+      --gold-hot: #FFD700;
+      --red: #CC2200;
+      --cream: #FAFAF8;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      background: rgba(5,8,5,0.95);
+      border-bottom: 1px solid rgba(239,178,30,0.1);
+    }
+    .nav-logo {
+      font-family: 'Black Ops One', cursive;
+      font-size: 1.8rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .nav-links a { color: var(--cream); text-decoration: none; opacity: 0.7; }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    .container {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(3rem, 10vw, 8rem);
+      line-height: 0.85;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      opacity: 0.8;
+      margin-bottom: 3rem;
+    }
+
+    .scoreboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .score-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(239,178,30,0.2);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .score-number {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 5rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .score-label {
+      font-family: 'Black Ops One', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      opacity: 0.6;
+      margin-top: 0.5rem;
+    }
+
+    .prediction-list {
+      margin-top: 4rem;
+    }
+
+    .prediction-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      border-bottom: 1px solid rgba(239,178,30,0.1);
+      transition: background 0.2s;
+    }
+    .prediction-row:hover {
+      background: rgba(239,178,30,0.05);
+    }
+
+    .prediction-status {
+      min-width: 120px;
+      font-family: 'Black Ops One', cursive;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .status-won { background: var(--green); color: white; }
+    .status-lost { background: var(--red); color: white; }
+    .status-pending { background: var(--gold); color: black; }
+
+    .prediction-text {
+      flex: 1;
+      font-size: 1.15rem;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    /* ---- VISUAL OPTIMIZATION ELEMENTS ---- */
+    .progress-bar-wrap {
+      background: rgba(255,255,255,0.1);
+      height: 24px;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(90deg, var(--gold), var(--gold-hot));
+      height: 100%;
+      border-radius: 12px;
+      transition: width 1s ease-in-out;
+    }
+
+    .chart-container {
+      background: rgba(255,255,255,0.03);
+      padding: 2rem;
+      border: 1px solid rgba(239,178,30,0.1);
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .visual-sep {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 4rem 0;
+      opacity: 0.3;
+    }
+
+    .cta-button-hot {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 1.2rem 2.5rem;
+      font-family: 'Black Ops One', cursive;
+      font-size: 1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(239,178,30,0.3);
+      margin-top: 1rem;
+    }
+
+    .cta-button-hot:hover {
+      background: var(--gold-hot);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 40px rgba(255,215,0,0.6);
+    }
+
+    .img-placeholder {
+      background: #1a1a1a;
+      border: 2px dashed #444;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 21/9;
+      margin: 2rem 0;
+      color: #666;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+    }
+
+    .prediction-cta {
+      margin-left: auto;
+    }
+    .btn-bet {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 0.8rem 1.5rem;
+      font-family: 'Black Ops One', cursive;
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-bet:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .gamification-shoutout {
+      margin-top: 5rem;
+      text-align: center;
+      background: var(--green);
+      padding: 4rem;
+      border-radius: 8px;
+    }
+    .gamification-shoutout h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      padding: 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(239,178,30,0.1);
+      margin-top: 4rem;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .prediction-row { flex-direction: column; text-align: center; align-items: center; }
+      .prediction-cta { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">The LV <span>A's</span></a>
+    <ul class="nav-links">
+      <li><a href="/parlay-builder/">Parlay Builder</a></li>
+      <li><a href="/prediction-tracker/">Predictions</a></li>
+      <li><a href="/vegas-comparison/">Vegas Value</a></li>
+      <li><a href="/blog/index.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>RATE MY TAKE</h1>
+    <p class="hero-sub">We don't just talk. We track. Every hot take, every bold prediction, every time we went out on a limb. Keep us honest below.</p>
+
+    <div class="scoreboard">
+      <div class="score-item">
+        <div class="score-number">14</div>
+        <div class="score-label">🏆 WINS</div>
+      </div>
+      <div class="score-item">
+        <div class="score-number">6</div>
+        <div class="score-label">🚫 LOSSES</div>
+      </div>
+      <div class="score-item">
+        <div class="score-number">70%</div>
+        <div class="score-label">🎯 HIT RATE</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h3>📈 Take Accuracy Progress</h3>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width: 70%;"></div>
+      </div>
+      <p style="opacity: 0.7; margin-top: 1rem;">Tracking 20 major predictions across the 2026 season cycle.</p>
+    </div>
+
+    <div class="img-placeholder">
+      <span>PREDICTION HISTORY VISUAL</span>
+      <span style="font-size: 1rem;">[Animated Chart Showing Take Accuracy Over Time]</span>
+    </div>
+
+    <div class="prediction-list">
+      <div class="prediction-row">
+        <div class="prediction-status status-won">WIN</div>
+        <div class="prediction-text">"Vegas Opening Night will sell out in less than 2 minutes."</div>
+        <div class="prediction-cta"><a href="#" class="share-btn">🐦 Share</a></div>
+      </div>
+      <div class="prediction-row">
+        <div class="prediction-status status-won">WIN</div>
+        <div class="prediction-text">"A's will sign 2 All-Stars before the 2026 season starts."</div>
+        <div class="prediction-cta"><a href="#" class="share-btn">🐦 Share</a></div>
+      </div>
+      <div class="prediction-row">
+        <div class="prediction-status status-pending">PENDING</div>
+        <div class="prediction-text">"The Las Vegas Athletics will make the Postseason in 2026."</div>
+        <div class="prediction-cta"><a href="https://www.fanduel.com" class="cta-button-hot">BACK THIS TAKE</a></div>
+      </div>
+      <div class="prediction-row">
+        <div class="prediction-status status-lost">LOSS</div>
+        <div class="prediction-text">"The Bally's stage demolition will be delayed until late 2025."</div>
+        <div class="prediction-cta"><a href="#" class="share-btn">🐦 Share</a></div>
+      </div>
+      <div class="prediction-row" style="border-bottom: none;">
+        <div class="prediction-status status-pending">PENDING</div>
+        <div class="prediction-text">"A's Bullpen will rank Top 5 in the AL by June."</div>
+        <div class="prediction-cta"><a href="https://www.draftkings.com" class="cta-button-hot">BACK THIS TAKE</a></div>
+      </div>
+    </div>
+
+    <div class="visual-sep"></div>
+
+    <div class="gamification-shoutout">
+      <h2>BACK OUR TAKES WITH REAL MONEY</h2>
+      <p style="margin-bottom: 2rem; font-size: 1.2rem;">Our 70% hit rate speaks for itself. Don't just watch us win — win with us.</p>
+      
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://www.fanduel.com" class="cta-button-hot">GET $150 IN BONUS BETS</a>
+        <a href="#" class="btn-bet" style="padding: 1.2rem 2rem;">Vegas Residents Special</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Predicting the future is never a guarantee. Gamble responsibly. &copy; 2026 The LV A's. All takes are documented and time-stamped via GitHub.</p>
+  </footer>
+</body>
+</html>
