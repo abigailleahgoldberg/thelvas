@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - The LV A's</title>
+  <meta name="description" content="The latest hot takes, history, and stadium updates for the Las Vegas Athletics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #050805;
+      --green: #003831;
+      --green-bright: #005C4B;
+      --gold: #EFB21E;
+      --gold-hot: #FFD700;
+      --red: #CC2200;
+      --cream: #FAFAF8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--dark); color: var(--cream); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%; left: -50%; width: 200%; height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4;
+      animation: grain 0.4s steps(1) infinite;
+    }
+
+    @keyframes grain {
+      0%, 100% { transform: translate(0,0); }
+      10% { transform: translate(-2%,-2%); }
+      20% { transform: translate(2%,2%); }
+      30% { transform: translate(-1%,3%); }
+      40% { transform: translate(3%,-1%); }
+      50% { transform: translate(-3%,1%); }
+      60% { transform: translate(1%,-3%); }
+      70% { transform: translate(-1%,2%); }
+      80% { transform: translate(2%,-2%); }
+      90% { transform: translate(-2%,1%); }
+    }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 3rem; background: rgba(5,8,5,0.95); backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(239,178,30,0.1);
+    }
+    .nav-logo { font-family: 'Black Ops One', cursive; font-size: 1.8rem; color: var(--gold); text-decoration: none; }
+    .nav-logo span { color: var(--cream); }
+
+    .blog-container { max-width: 1100px; margin: 6rem auto; padding: 0 2rem; }
+    .section-label { font-size: 0.75rem; font-weight: 900; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(239,178,30,0.5), transparent); }
+    
+    h1 { font-family: 'Bebas Neue', cursive; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.9; margin-bottom: 4rem; color: var(--cream); }
+    h1 em { font-style: normal; color: var(--gold); }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; }
+    
+    .blog-card {
+      background: rgba(0,56,49,0.15);
+      border: 1px solid rgba(239,178,30,0.15);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 0;
+      background: var(--gold);
+      transition: height 0.3s;
+    }
+
+    .blog-card:hover { border-color: rgba(239,178,30,0.5); transform: translateY(-4px); }
+    .blog-card:hover::before { height: 100%; }
+
+    .card-tag { font-size: 0.7rem; font-weight: 900; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .blog-card h3 { font-family: 'Bebas Neue', cursive; font-size: 2.2rem; line-height: 1; margin-bottom: 1rem; color: var(--cream); }
+    .blog-card p { font-size: 0.95rem; opacity: 0.7; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+    .card-arrow { font-family: 'Black Ops One', cursive; font-size: 0.8rem; letter-spacing: 0.15em; color: var(--gold); margin-top: auto; }
+
+    footer { padding: 3rem; border-top: 1px solid rgba(239,178,30,0.1); margin-top: 6rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Black Ops One', cursive; font-size: 1.4rem; color: var(--gold); }
+    .footer-links a { color: var(--cream); text-decoration: none; font-size: 0.8rem; opacity: 0.6; margin-left: 1.5rem; }
+    .footer-links a:hover { color: var(--gold); opacity: 1; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .blog-container { padding: 4rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">The LV <span>A's</span></a>
+  </nav>
+
+  <div class="blog-container">
+    <div class="section-label">Our Perspectives</div>
+    <h1>The <em>Archive</em></h1>
+
+    <div class="blog-grid">
+      <a href="/blog/las-vegas-will-be-best-baseball-city.html" class="blog-card">
+        <div class="card-tag">Hot Take</div>
+        <h3>The Best Atmosphere in America</h3>
+        <p>Why Vegas night games and a purpose-built stadium will create a baseball energy unlike anything ever seen.</p>
+        <div class="card-arrow">Read More &rarr;</div>
+      </a>
+
+      <a href="/blog/moneyball-to-vegas-as-complete-history.html" class="blog-card">
+        <div class="card-tag">History</div>
+        <h3>From Moneyball to Vegas</h3>
+        <p>A deep dive into the A's franchise history, from Philadelphia to the newest chapter in Las Vegas.</p>
+        <div class="card-arrow">Read More &rarr;</div>
+      </a>
+
+      <a href="/blog/las-vegas-athletics-stadium-construction-tracker-2026.html" class="blog-card">
+        <div class="card-tag">Stadium</div>
+        <h3>Stadium Construction Tracker</h3>
+        <p>Monthly updates on the $2B construction project at the heart of the Las Vegas Strip. 2028 is coming.</p>
+        <div class="card-arrow">Read More &rarr;</div>
+      </a>
+
+      <a href="/blog/best-sports-bars-vegas-watch-as-games.html" class="blog-card">
+        <div class="card-tag">Guide</div>
+        <h3>Best Places to Watch</h3>
+        <p>Our curated list of the best sports bars and sportsbooks in Vegas to catch every Athletics game this season.</p>
+        <div class="card-arrow">Read More &rarr;</div>
+      </a>
+
+      <a href="/blog/oakland-to-vegas-fan-emotions.html" class="blog-card">
+        <div class="card-tag">Fan Feelings</div>
+        <h3>Oakland to Vegas: The Emotions</h3>
+        <p>Processing the grief of losing Oakland while finding a new home and identity in the desert.</p>
+        <div class="card-arrow">Read More &rarr;</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">The LV A's</div>
+    <div class="footer-links">
+      <a href="https://lvathleticsnation.com">LV Athletics Nation</a>
+      <a href="https://thelvathletics.com">The LV Athletics</a>
+    </div>
+  </footer>
+</body>
+</html>
