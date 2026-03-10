@@ -217,7 +217,102 @@
       .comparison-table-v2 { font-size: 0.9rem; }
       .comparison-table-v2 th, .comparison-table-v2 td { padding: 0.75rem; }
     }
-  </style>
+  
+    .ticket-chart {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(0,56,49,0.2), rgba(239,178,30,0.1));
+      border-radius: 12px;
+      border: 1px solid rgba(239,178,30,0.3);
+    }
+    
+    .chart-title {
+      text-align: center;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+    
+    .chart-bars {
+      display: flex;
+      align-items: end;
+      justify-content: space-around;
+      height: 300px;
+      margin: 2rem 0;
+      border-bottom: 2px solid rgba(239,178,30,0.5);
+      padding-bottom: 1rem;
+    }
+    
+    .bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 120px;
+    }
+    
+    .bar-container {
+      height: 250px;
+      display: flex;
+      align-items: end;
+      margin-bottom: 1rem;
+    }
+    
+    .bar-fill {
+      width: 60px;
+      border-radius: 8px 8px 0 0;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .bar-fill:hover {
+      transform: scale(1.05);
+    }
+    
+    .athletics-bar { background: linear-gradient(0deg, #003831, #005C4B); height: 80px; }
+    .knights-bar { background: linear-gradient(0deg, #B9975B, #EFB21E); height: 180px; }
+    .raiders-bar { background: linear-gradient(0deg, #A5ACAF, #000000); height: 220px; }
+    
+    .bar-value {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--cream);
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+    
+    .bar-label {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.3rem;
+      color: var(--cream);
+      text-align: center;
+    }
+    
+    .value-indicator {
+      background: var(--green);
+      color: var(--gold);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 900;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+</style>
+
+  <meta property="og:title" content="The LV A's - Hot Takes and Fan Culture">
+  <meta property="og:description" content="Bold takes, unfiltered fan perspective, and Vegas baseball culture for the Las Vegas Athletics.">
+  <meta property="og:image" content="https://thelvas.com/og-image.png">
+  <meta property="og:url" content="https://thelvas.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The LV A's">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The LV A's - Hot Takes and Fan Culture">
+  <meta name="twitter:description" content="Bold takes, unfiltered fan perspective, and Vegas baseball culture for the Las Vegas Athletics.">
+  <meta name="twitter:image" content="https://thelvas.com/og-image.png">
+
 </head>
 <body>
 
@@ -281,9 +376,37 @@
       <p style="font-size: 1.15rem; line-height: 1.8;">Look, we love the Knights and the Raiders. But 81 home games means the A's have to be accessible. You get a world-class stadium experience, better weather (once the roof closes or at night), and a vibe that's much more <strong>"Vegas Party"</strong> than "Corporate Event." For the price of ONE Raiders ticket, you can bring the whole family to the ballpark and still have money left for hot dogs.</p>
     </div>
 
-    <div class="img-placeholder">
-      <span>TICKET VALUE COMPARISON CHART</span>
-      <span style="font-size: 1rem;">[3D Bar Graph: A's vs Knights vs Raiders]</span>
+    <div class="ticket-chart">
+      <div class="chart-title">Average Ticket Prices - Vegas Sports</div>
+      <div class="chart-bars">
+        <div class="bar">
+          <div class="bar-container">
+            <div class="bar-fill athletics-bar">
+              <div class="bar-value">$35</div>
+            </div>
+          </div>
+          <div class="bar-label">LV Athletics</div>
+          <div class="value-indicator">ELITE VALUE</div>
+        </div>
+        <div class="bar">
+          <div class="bar-container">
+            <div class="bar-fill knights-bar">
+              <div class="bar-value">$95</div>
+            </div>
+          </div>
+          <div class="bar-label">Golden Knights</div>
+          <div class="value-indicator">Expensive</div>
+        </div>
+        <div class="bar">
+          <div class="bar-container">
+            <div class="bar-fill raiders-bar">
+              <div class="bar-value">$125</div>
+            </div>
+          </div>
+          <div class="bar-label">Raiders</div>
+          <div class="value-indicator">Premium</div>
+        </div>
+      </div>
     </div>
 
     <div class="callout-box">
