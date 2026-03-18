@@ -132,7 +132,7 @@ export default function Home() {
     <div style={{ background: C.dark, minHeight: '100vh' }}>
       {/* ============ NAV ============ */}
       <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
+        position: 'fixed', top: '28px', left: 0, right: 0, zIndex: 200,
         background: 'linear-gradient(to bottom, rgba(5,8,5,0.97), transparent)',
         backdropFilter: 'blur(6px)',
         padding: '1.2rem 2.5rem',

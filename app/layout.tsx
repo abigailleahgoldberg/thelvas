@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { NetworkBar } from '@/components/NetworkBar'
 
 export const viewport = {
   width: 'device-width',
@@ -18,7 +19,6 @@ export const metadata: Metadata = {
     description: 'Hot takes, game recaps, and fan culture for Las Vegas Athletics fans. No mercy. No filter. Just baseball.',
     url: 'https://thelvas.com',
     type: 'website',
-    images: [{ url: 'https://thelvas.com/og-image.png' }],
   },
   twitter: { card: 'summary_large_image' },
 }
@@ -39,12 +39,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: 'The LV A\'s',
               url: 'https://thelvas.com',
               description: 'Bold takes and unfiltered fan perspective on the Las Vegas Athletics.',
-              sameAs: ['https://twitter.com/thelvas'],
             }),
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <NetworkBar />
+        <div style={{ paddingTop: '28px' }}>{children}</div>
+      </body>
     </html>
   )
 }
