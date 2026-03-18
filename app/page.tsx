@@ -46,7 +46,7 @@ const TICKER_ITEMS = [
 
 const FEATURES = [
   {
-    emoji: '🎯',
+    icon: 'TGT',
     title: 'Lock of the Week',
     subtitle: 'Parlay Builder',
     body: 'Exclusive Same Game Parlay picks. Bold, confident, crunched from the numbers. The best action on the Strip.',
@@ -54,7 +54,7 @@ const FEATURES = [
     cta: 'Get Today\'s Lock',
   },
   {
-    emoji: '📊',
+    icon: 'PCT',
     title: 'Accountability',
     subtitle: 'Rate My Take Tracker',
     body: 'We don\'t just talk. We track. Every bold prediction with a win/loss record. How hot are our takes really?',
@@ -62,7 +62,7 @@ const FEATURES = [
     cta: 'Check Our Record',
   },
   {
-    emoji: '💵',
+    icon: 'VAL',
     title: 'Value Check',
     subtitle: 'Athletics vs Knights/Raiders',
     body: 'Why Athletics games are the absolute best bang for your buck on the Las Vegas Strip. Ticket price comparisons.',
@@ -70,7 +70,7 @@ const FEATURES = [
     cta: 'View Comparison',
   },
   {
-    emoji: '🏟️',
+    icon: 'STD',
     title: 'Stadium',
     subtitle: 'Construction Tracker',
     body: 'Monthly updates on the $1.75B construction project at the heart of the Strip. 2028 is coming.',
@@ -78,7 +78,7 @@ const FEATURES = [
     cta: 'Track The Build',
   },
   {
-    emoji: '📜',
+    icon: 'HST',
     title: 'History',
     subtitle: 'From Moneyball to Vegas',
     body: 'A deep dive into the A\'s franchise history, from Philadelphia to the newest chapter in Las Vegas.',
@@ -86,7 +86,7 @@ const FEATURES = [
     cta: 'Read The History',
   },
   {
-    emoji: '🍺',
+    icon: 'GDE',
     title: 'Fan Guide',
     subtitle: 'Best Places to Watch',
     body: 'Our curated list of the best sports bars and sportsbooks in Vegas to catch every Athletics game.',
@@ -211,7 +211,7 @@ export default function Home() {
                 padding: '0 3rem',
                 whiteSpace: 'nowrap',
               }}>
-                ⚾ {item}
+                • {item}
               </span>
             ))}
           </div>
@@ -366,7 +366,7 @@ export default function Home() {
                 alignItems: 'center',
                 gap: '0.5rem',
               }}>
-                🎟️ Get Tickets
+                Get Tickets →
               </a>
             </div>
 
@@ -510,7 +510,7 @@ export default function Home() {
             display: 'inline-block',
             marginBottom: '2rem',
           }}>
-            🔥 Hot Take of the Week
+            Hot Take of the Week
           </span>
           <blockquote style={{
             fontFamily: "'Bebas Neue', sans-serif",
@@ -568,7 +568,7 @@ export default function Home() {
                   flexDirection: 'column',
                   gap: '1rem',
                 }}>
-                  <div style={{ fontSize: '2rem' }}>{f.emoji}</div>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.55rem', letterSpacing: '0.2em', color: '#003831', background: '#EFB21E', padding: '0.3rem 0.6rem', display: 'inline-block', fontWeight: 700, marginBottom: '0.5rem' }}>{f.icon}</div>
                   <div>
                     <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '0.5rem', letterSpacing: '0.15em', color: C.gold, textTransform: 'uppercase', marginBottom: '0.4rem' }}>{f.subtitle}</div>
                     <h3 style={{ fontFamily: "'Oswald', sans-serif", fontSize: '1.4rem', fontWeight: 700, color: C.bone, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{f.title}</h3>
@@ -628,7 +628,7 @@ export default function Home() {
           </p>
           {subscribed ? (
             <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '1.3rem', color: C.gold, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              You&apos;re in. Let&apos;s go. ⚾
+              You&apos;re in. Let&apos;s go.
             </div>
           ) : (
             <form onSubmit={e => { e.preventDefault(); if (email) setSubscribed(true) }} style={{ display: 'flex', gap: '0' }}>

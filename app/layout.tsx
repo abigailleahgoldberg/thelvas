@@ -1,6 +1,13 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#003831',
+}
+
 export const metadata: Metadata = {
   title: 'The LV A\'s — Las Vegas Athletics Fan Site',
   description: 'Hot takes, game recaps, and fan culture for Las Vegas Athletics fans. No mercy. No filter. Just baseball.',
