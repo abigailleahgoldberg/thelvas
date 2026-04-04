@@ -1,4 +1,4 @@
-# Final Four 2025: Betting Lines, Best Bets, and the Squares You Should Fade
+# Final Four 2026: Betting Lines, Best Bets, and the Squares You Should Fade
 
 It's Final Four weekend. The sportsbooks are full, the lines have moved seventeen times since Tuesday, and somewhere in the Circa sportsbook a man named Dave is telling anyone who will listen about his parlay. We love Dave. We also would not tail Dave.
 
