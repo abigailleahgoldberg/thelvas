@@ -1,4 +1,4 @@
-# Las Vegas Sports Scene 2025: The City That Became a Real Sports Town
+# Las Vegas Sports Scene 2026: The City That Became a Real Sports Town
 
 Two years ago, the debate was still happening. Could Las Vegas sustain real sports culture? Were fans just tourists? Did the city have the local density to fill arenas when the visitors weren't here? The answers are now in: yes, yes it does, and the Las Vegas Raiders, Golden Knights, Aces, and now A's have produced something that nobody fully predicted — an actual sports town.
 
@@ -38,4 +38,4 @@ The future of sports fandom in America looks more like Las Vegas than Las Vegas 
 
 An NHL team already here and winning. An NFL team here and finding its identity. An NBA expansion franchise that will eventually land here — the negotiation is happening in slow motion but the destination is not in doubt. A WNBA dynasty that has already won multiple championships. A baseball team finding its footing.
 
-Las Vegas in 2025 is, without serious debate, a real sports town. The skeptics were wrong. The city proved what it could do. Now it's just a matter of what the teams do from here.
+Las Vegas in 2026 is, without serious debate, a real sports town. The skeptics were wrong. The city proved what it could do. Now it's just a matter of what the teams do from here.
